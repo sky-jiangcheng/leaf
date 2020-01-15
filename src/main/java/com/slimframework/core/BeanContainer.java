@@ -1,11 +1,13 @@
 package com.slimframework.core;
 
+import com.slimframework.core.annotation.Component;
+import com.slimframework.core.annotation.Controller;
+import com.slimframework.core.annotation.Repository;
+import com.slimframework.core.annotation.Service;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -14,6 +16,18 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 public class BeanContainer {
+
+    /**
+     * 是否加载Bean
+     */
+    private boolean isLoadBean = false;
+
+    /**
+     * 加载bean的注解列表
+     */
+    private static final List<Class<? extends Annotation>> BEAN_ANNOTATION
+            = Arrays.asList(Component.class, Controller.class, Service.class, Repository.class);
+
     /**
      * 存放所有bean的map
      *
