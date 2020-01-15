@@ -5,6 +5,8 @@ import com.slimframework.core.annotation.Controller;
 import com.slimframework.core.annotation.Repository;
 import com.slimframework.core.annotation.Service;
 import com.slimframework.util.ClassUtil;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;
@@ -16,7 +18,24 @@ import java.util.stream.Collectors;
  * Bean容器
  */
 @Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BeanContainer {
+
+    /**
+     * 获取Bean容器实例
+     */
+    public static BeanContainer getInstance() {
+        return ContainerHolder.HOLDER.instance;
+    }
+
+    private enum ContainerHolder {
+        HOLDER;
+        private BeanContainer instance;
+
+        ContainerHolder() {
+            instance = new BeanContainer();
+        }
+    }
 
     /**
      * 是否加载Bean
