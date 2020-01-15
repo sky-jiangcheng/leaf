@@ -4,6 +4,7 @@ import com.slimframework.core.annotation.Component;
 import com.slimframework.core.annotation.Controller;
 import com.slimframework.core.annotation.Repository;
 import com.slimframework.core.annotation.Service;
+import com.slimframework.util.ClassUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;
@@ -29,9 +30,39 @@ public class BeanContainer {
             = Arrays.asList(Component.class, Controller.class, Service.class, Repository.class);
 
     /**
-     * 存放所有bean的map
-     *
+     * 扫描加载所有Bean
      */
+    public void loadBeans(String basePackage) {
+        if (isLoadBean()) {
+            log.warn("bean已经加载");
+            return;
+        }
+
+        Set<Class<?>> classSet = ClassUtil.getPackageClass(basePackage);
+        classSet.stream()
+                .filter(clz -> {
+                    for (Class<? extends Annotation> annotation : BEAN_ANNOTATION) {
+                        if (clz.isAnnotationPresent(annotation)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+                .forEach(clz -> beanMap.put(clz, ClassUtil.newInstance(clz)));
+        isLoadBean = true;
+    }
+
+    /**
+     * 是否加载Bean
+     */
+    public boolean isLoadBean() {
+        return isLoadBean;
+    }
+
+        /**
+         * 存放所有bean的map
+         *
+         */
     private Map<Class<?>,Object> beanMap = new ConcurrentHashMap<>();
 
     /**
