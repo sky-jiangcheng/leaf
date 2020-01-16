@@ -1,6 +1,7 @@
 package com.jiangc.mvc;
 
 import com.alibaba.fastjson.JSON;
+import com.jiangc.Leaf;
 import com.jiangc.core.BeanContainer;
 import com.jiangc.mvc.annotation.ResponseBody;
 import com.jiangc.mvc.bean.ModelAndView;
@@ -128,7 +129,10 @@ public class ResultRender {
                 throw new RuntimeException("返回类型不合法");
             }
             try {
-                req.getRequestDispatcher("/templates/" + path).forward(req, resp);
+                //req.getRequestDispatcher("/templates/" + path).forward(req, resp);
+                Leaf.getConfiguration().getResourcePath();
+                // req.getRequestDispatcher("/templates/" + path).forward(req, resp);
+                req.getRequestDispatcher(Leaf.getConfiguration().getResourcePath() + path).forward(req, resp);
             } catch (Exception e) {
                 log.error("转发请求失败", e);
                 // TODO: 异常统一处理，400等...
