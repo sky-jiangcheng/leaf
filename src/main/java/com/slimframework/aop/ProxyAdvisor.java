@@ -30,8 +30,9 @@ public class ProxyAdvisor {
 
     /**
      * 执行代理方法
+     * v1
      */
-    public Object doProxy(Object target, Class<?> targetClass, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+    /*public Object doProxy(Object target, Class<?> targetClass, Method method, Object[] args, MethodProxy proxy) throws Throwable {
         Object result = null;
 
         // 使用 aspectJ 通过 Aspect 中的pointcut 来进行判断
@@ -57,6 +58,44 @@ public class ProxyAdvisor {
             }
         }
 
+        return result;
+    }*/
+
+
+    /*
+    将原来代理类只能有一个的情况进行强化 创建新的代理执行方法
+    v2
+    */
+
+    /**
+     * 执行顺序
+     */
+    private int order;
+
+    /**
+     * 执行代理方法
+     */
+    public Object doProxy(AdviceChain adviceChain) throws Throwable {
+        Object result = null;
+        Class<?> targetClass = adviceChain.getTargetClass();
+        Method method = adviceChain.getMethod();
+        Object[] args = adviceChain.getArgs();
+
+        if (advice instanceof MethodBeforeAdvice) {
+            ((MethodBeforeAdvice) advice).before(targetClass, method, args);
+        }
+        try {
+            result = adviceChain.doAdviceChain(); //执行代理链方法
+            if (advice instanceof AfterReturningAdvice) {
+                ((AfterReturningAdvice) advice).afterReturning(targetClass, result, method, args);
+            }
+        } catch (Exception e) {
+            if (advice instanceof ThrowsAdvice) {
+                ((ThrowsAdvice) advice).afterThrowing(targetClass, method, args, e);
+            } else {
+                throw new Throwable(e);
+            }
+        }
         return result;
     }
 }
