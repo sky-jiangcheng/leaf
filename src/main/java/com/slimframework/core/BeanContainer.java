@@ -1,5 +1,6 @@
 package com.slimframework.core;
 
+import com.slimframework.aop.annotation.Aspect;
 import com.slimframework.core.annotation.Component;
 import com.slimframework.core.annotation.Controller;
 import com.slimframework.core.annotation.Repository;
@@ -46,7 +47,7 @@ public class BeanContainer {
      * 加载bean的注解列表
      */
     private static final List<Class<? extends Annotation>> BEAN_ANNOTATION
-            = Arrays.asList(Component.class, Controller.class, Service.class, Repository.class);
+            = Arrays.asList(Component.class, Controller.class, Service.class, Repository.class, Aspect.class);
 
     /**
      * 扫描加载所有Bean
