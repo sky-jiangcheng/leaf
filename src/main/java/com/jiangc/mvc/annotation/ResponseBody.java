@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * 用于标记返回json
  */
-@Target(ElementType.PARAMETER)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ResponseBody {
 }
