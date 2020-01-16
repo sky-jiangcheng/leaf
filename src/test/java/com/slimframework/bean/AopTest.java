@@ -16,5 +16,6 @@ public class AopTest {
         new Ioc().doIoc();
         SlimController controller = (SlimController) beanContainer.getBean(SlimController.class);
         controller.hello();
+        controller.helloForAspect();
     }
 }

@@ -11,12 +11,15 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <slf4j-api.version>1.7.25</slf4j-api.version>
         <lombok.version>1.16.20</lombok.version>
-
+        <!-- junit 用于测试用例-->
         <junit.version>4.12</junit.version>
-
+        <!--cglib 应用 实现aop -->
         <cglib.version>3.2.6</cglib.version>
+        <!--aspectj实现更灵活的切片-->
+        <aspectj.version>1.8.13</aspectj.version>
     </properties>
     <dependencies>
         <!-- SLF4J -->
@@ -32,20 +35,24 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- junit -->
+        <!-- junit 用于测试用例-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- cglib -->
+        <!--cglib 应用 实现aop -->
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
+        </dependency>
+        <!--aspectj实现更灵活的切片-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
         </dependency>
     </dependencies>
 

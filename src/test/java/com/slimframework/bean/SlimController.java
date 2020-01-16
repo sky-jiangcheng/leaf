@@ -13,4 +13,8 @@ public class SlimController {
     public void hello(){
         log.info(slimService.helloworld());
     }
+
+    public void helloForAspect() {
+        log.info("Hello Aspectj");
+    }
 }
