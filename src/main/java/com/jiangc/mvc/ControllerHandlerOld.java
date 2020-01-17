@@ -17,12 +17,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * Controller 分发器
  */
 @Slf4j
-public class ControllerHandler {
+public class ControllerHandlerOld {
     private Map<PathInfo, ControllerInfo> pathControllerMap = new ConcurrentHashMap<>();
 
     private BeanContainer beanContainer;
 
-    public ControllerHandler() {
+    public ControllerHandlerOld() {
         beanContainer = BeanContainer.getInstance();
         Set<Class<?>> classSet = beanContainer.getClassesByAnnotation(RequestMapping.class);
         for (Class<?> clz : classSet) {
