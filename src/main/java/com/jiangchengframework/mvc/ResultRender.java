@@ -1,7 +1,7 @@
 package com.jiangchengframework.mvc;
 
 import com.alibaba.fastjson.JSON;
-import com.jiangchengframework.Leaf;
+import com.jiangchengframework.JiangchengStarter;
 import com.jiangchengframework.core.BeanContainer;
 import com.jiangchengframework.mvc.annotation.ResponseBody;
 import com.jiangchengframework.mvc.bean.ModelAndView;
@@ -131,9 +131,9 @@ public class ResultRender {
             }
             try {
                 //req.getRequestDispatcher("/templates/" + path).forward(req, resp);
-                Leaf.getConfiguration().getResourcePath();
+                JiangchengStarter.getConfiguration().getResourcePath();
                 // req.getRequestDispatcher("/templates/" + path).forward(req, resp);
-                req.getRequestDispatcher(Leaf.getConfiguration().getResourcePath() + path).forward(req, resp);
+                req.getRequestDispatcher(JiangchengStarter.getConfiguration().getResourcePath() + path).forward(req, resp);
             } catch (Exception e) {
                 log.error("转发请求失败", e);
                 // TODO: 异常统一处理，400等...

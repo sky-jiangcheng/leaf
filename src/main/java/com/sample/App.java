@@ -1,9 +1,9 @@
 package com.sample;
 
-import com.jiangchengframework.Leaf;
+import com.jiangchengframework.JiangchengStarter;
 
 public class App {
     public static void main(String[] args) {
-        Leaf.run(App.class);
+        JiangchengStarter.run(App.class);
     }
 }

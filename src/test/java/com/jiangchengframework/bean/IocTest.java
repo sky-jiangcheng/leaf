@@ -1,4 +1,4 @@
-package com.jiangc.bean;
+package com.jiangchengframework.bean;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -11,7 +11,7 @@ public class IocTest {
     @Test
     public void doIoc(){
         BeanContainer beanContainer = BeanContainer.getInstance();
-        beanContainer.loadBeans("com.slimframework");
+        beanContainer.loadBeans("com.jiangchengframework");
         new Ioc().doIoc();
         SlimController slimController = (SlimController) beanContainer.getBean(SlimController.class);
         slimController.hello();

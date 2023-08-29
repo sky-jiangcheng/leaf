@@ -1,4 +1,4 @@
-package com.jiangc.bean;
+package com.jiangchengframework.bean;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -12,7 +12,7 @@ public class AopTest {
     @Test
     public void doAop(){
         BeanContainer beanContainer = BeanContainer.getInstance();
-        beanContainer.loadBeans("com.slimframework");
+        beanContainer.loadBeans("com.jiangchengframework");
         new Aop().doAop();
         new Ioc().doIoc();
         SlimController controller = (SlimController) beanContainer.getBean(SlimController.class);

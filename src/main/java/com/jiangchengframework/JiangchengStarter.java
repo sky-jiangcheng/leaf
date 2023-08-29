@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Slf4j
-public class Leaf {
+public class JiangchengStarter {
     /**
      * 全局配置
      */
@@ -47,7 +47,7 @@ public class Leaf {
      * 启动
      */
     public static void run(Configuration configuration) {
-        new Leaf().start(configuration);
+        new JiangchengStarter().start(configuration);
     }
 
     /**
@@ -55,7 +55,7 @@ public class Leaf {
      */
     private void start(Configuration configuration) {
         try {
-            Leaf.configuration = configuration;
+            JiangchengStarter.configuration = configuration;
             String basePackage = configuration.getBootClass().getPackage().getName();
             BeanContainer.getInstance().loadBeans(basePackage);
             //注意Aop必须在Ioc之前执行

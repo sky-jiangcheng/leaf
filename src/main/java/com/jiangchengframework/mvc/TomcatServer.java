@@ -9,7 +9,7 @@ import org.apache.catalina.webresources.StandardRoot;
 import org.apache.jasper.servlet.JspServlet;
 
 import com.jiangchengframework.Configuration;
-import com.jiangchengframework.Leaf;
+import com.jiangchengframework.JiangchengStarter;
 import com.jiangchengframework.mvc.server.Server;
 
 import java.io.File;
@@ -25,7 +25,7 @@ public class TomcatServer implements Server {
     private Tomcat tomcat;
 
     public TomcatServer() {
-        new TomcatServer(Leaf.getConfiguration());
+        new TomcatServer(JiangchengStarter.getConfiguration());
     }
 
     public TomcatServer(Configuration configuration) {
@@ -51,14 +51,15 @@ public class TomcatServer implements Server {
             // 添加jspServlet，defaultServlet和自己实现的dispatcherServlet
             // V2
             // 去除了JspHandler和SimpleUrlHandler这两个servlet的注册
-            //tomcat.addServlet("", "jspServlet", new JspServlet()).setLoadOnStartup(3);
-            //tomcat.addServlet("", "defaultServlet", new DefaultServlet()).setLoadOnStartup(1);
+            tomcat.addServlet("", "jspServlet", new JspServlet()).setLoadOnStartup(3);
+            tomcat.addServlet("", "defaultServlet", new DefaultServlet()).setLoadOnStartup(1);
 
             tomcat.addServlet("", "dispatcherServlet", new DispatcherServlet()).setLoadOnStartup(0);
+//            tomcat.addServlet(configuration.getContextPath(), "dispatcherServlet", new DispatcherServlet()).setLoadOnStartup(0);
             ctx.addServletMappingDecoded("/templates/" + "*", "jspServlet");
             ctx.addServletMappingDecoded("/static/" + "*", "defaultServlet");
             ctx.addServletMappingDecoded("/*", "dispatcherServlet");
-            ctx.addServletMappingDecoded("/*", "dispatcherServlet");
+            
         } catch (Exception e) {
             log.error("初始化Tomcat失败", e);
             throw new RuntimeException(e);

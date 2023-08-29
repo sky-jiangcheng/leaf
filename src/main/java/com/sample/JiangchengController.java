@@ -6,7 +6,7 @@ import com.jiangchengframework.mvc.annotation.ResponseBody;
 
 @Controller
 @RequestMapping
-public class LeafController {
+public class JiangchengController {
     @RequestMapping
     @ResponseBody
     public String hello(){

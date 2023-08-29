@@ -3,7 +3,7 @@ package com.jiangchengframework.mvc.handler;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 
-import com.jiangchengframework.Leaf;
+import com.jiangchengframework.JiangchengStarter;
 import com.jiangchengframework.mvc.RequestHandlerChain;
 
 /**
@@ -41,6 +41,6 @@ public class JspHandler implements Handler {
      * 是否为jsp资源
      */
     private boolean isPageView(String url) {
-        return url.startsWith(Leaf.getConfiguration().getViewPath());
+        return url.startsWith(JiangchengStarter.getConfiguration().getViewPath());
     }
 }

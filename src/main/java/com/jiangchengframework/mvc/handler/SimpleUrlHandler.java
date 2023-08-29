@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 
-import com.jiangchengframework.Leaf;
+import com.jiangchengframework.JiangchengStarter;
 import com.jiangchengframework.mvc.RequestHandlerChain;
 
 /**
@@ -49,6 +49,6 @@ public class SimpleUrlHandler implements Handler {
      * 是否为静态资源
      */
     private boolean isStaticResource(String url) {
-        return url.startsWith(Leaf.getConfiguration().getAssetPath());
+        return url.startsWith(JiangchengStarter.getConfiguration().getAssetPath());
     }
 }

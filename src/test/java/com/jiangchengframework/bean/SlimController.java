@@ -1,4 +1,4 @@
-package com.jiangc.bean;
+package com.jiangchengframework.bean;
 
 import com.jiangchengframework.core.annotation.Controller;
 import com.jiangchengframework.ioc.annotation.Autowired;

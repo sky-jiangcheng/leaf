@@ -1,4 +1,4 @@
-package com.jiangc.bean;
+package com.jiangchengframework.bean;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -10,7 +10,7 @@ import com.jiangchengframework.aop.annotation.Order;
 
 @Slf4j
 @Order(2)
-@Aspect(pointcut = "@within(com.slimframework.core.annotation.Controller)")
+@Aspect(pointcut = "@within(com.jiangchengframework.core.annotation.Controller)")
 public class SlimAspect2 implements AroundAdvice {
     @Override
     public void before(Class<?> clz, Method method, Object[] args) throws Throwable {

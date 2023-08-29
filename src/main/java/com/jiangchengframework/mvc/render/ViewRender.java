@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jiangchengframework.Leaf;
+import com.jiangchengframework.JiangchengStarter;
 import com.jiangchengframework.mvc.RequestHandlerChain;
 import com.jiangchengframework.mvc.bean.ModelAndView;
 
@@ -33,6 +33,6 @@ public class ViewRender implements Render {
         String path = mv.getView();
         Map<String, Object> model = mv.getModel();
         model.forEach(req::setAttribute);
-        req.getRequestDispatcher(Leaf.getConfiguration().getViewPath() + path).forward(req, resp);
+        req.getRequestDispatcher(JiangchengStarter.getConfiguration().getViewPath() + path).forward(req, resp);
     }
 }
