@@ -1,8 +1,8 @@
 package com.sample;
 
-import com.jiangc.core.annotation.Controller;
-import com.jiangc.mvc.annotation.RequestMapping;
-import com.jiangc.mvc.annotation.ResponseBody;
+import com.jiangchengframework.core.annotation.Controller;
+import com.jiangchengframework.mvc.annotation.RequestMapping;
+import com.jiangchengframework.mvc.annotation.ResponseBody;
 
 @Controller
 @RequestMapping

@@ -1,7 +1,8 @@
 package com.jiangc.bean;
 
-import com.jiangc.core.annotation.Controller;
-import com.jiangc.ioc.annotation.Autowired;
+import com.jiangchengframework.core.annotation.Controller;
+import com.jiangchengframework.ioc.annotation.Autowired;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller

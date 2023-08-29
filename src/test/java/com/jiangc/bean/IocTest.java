@@ -1,9 +1,10 @@
 package com.jiangc.bean;
 
-import com.jiangc.core.BeanContainer;
-import com.jiangc.ioc.Ioc;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+
+import com.jiangchengframework.core.BeanContainer;
+import com.jiangchengframework.ioc.Ioc;
 
 @Slf4j
 public class IocTest {

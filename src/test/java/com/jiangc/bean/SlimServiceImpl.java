@@ -1,6 +1,6 @@
 package com.jiangc.bean;
 
-import com.jiangc.core.annotation.Service;
+import com.jiangchengframework.core.annotation.Service;
 
 @Service
 public class SlimServiceImpl implements SlimService {
